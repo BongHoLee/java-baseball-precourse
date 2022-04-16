@@ -1,18 +1,12 @@
-package baseball.game;
+package baseball.game.referee;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class Referee {
-    private int strikeZone;
+public class StrikeZoneFactory {
 
-    public Referee() {
-        this.strikeZone = createStrikeZone();
-    }
-
-    private int createStrikeZone() {
+    public static int createStrikeZone() {
         Set<Integer> strikeSet = new HashSet<>();
         while (strikeSet.size() < 3) {
             addStrikeTo(strikeSet);
@@ -20,13 +14,12 @@ public class Referee {
         return numericStrikeZoneOf(strikeSet);
     }
 
-
-    private void addStrikeTo(Set<Integer> strikeSet) {
+    private static void addStrikeTo(Set<Integer> strikeSet) {
         int createdStrike = Randoms.pickNumberInRange(1, 9);
         strikeSet.add(createdStrike);
     }
 
-    private int numericStrikeZoneOf(Set<Integer> strikeSet) {
+    private static int numericStrikeZoneOf(Set<Integer> strikeSet) {
         int numericStrike = 0;
 
         int eachDigit = 1;
@@ -37,5 +30,4 @@ public class Referee {
 
         return numericStrike;
     }
-
 }
