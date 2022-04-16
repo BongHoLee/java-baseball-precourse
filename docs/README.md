@@ -4,19 +4,24 @@
 
 ### 기능 구현 목록
 
-- Referee
-    - 각 자리가 1~9로 구성된 세 자리 수(스트라이크 존) 생성 및 저장
-        - 스트라이크존 생성
+- StrikeZoneFactory
+    - 각 자리가 1~9로 구성된 세 자리 수(스트라이크 존) 생성 
         - 생성된 스트라이크 존에 대한 유효성 검사
         - 유효성 검사가 통과된 숫자에 대해 저장
-    - 임의의 세 자리 숫자와 스트라이크존을 비교 및 결과 반환
-
-- Pitcher
-    - 사용자로부터 문자열을 입력 받음
+      
+- PitcherRule
     - 입력받은 문자열에 대해 유효성 검사
     - 검사 통과 시 3자리 숫자형으로 변환 및 반환
     - 검사 통과하지 못할 시 IllegaArgumentException 예외 발생
+  
+- Referee
+    - StrikeZoneFactory로부터 생성된 strikeZone을 저장
+    - Pitcher의 pitchNumber와 strikeZone을 비교 및 결과 반환
 
+- Pitcher
+    - 사용자로부터 pitchNumber를 입력 받음
+    - PitcherRule로부터 pitchNumber 검증
+    
 - Game
     - ScoreBoard에 점수 전달
     - 스트라이크 : 사용자로부터 게임 재시작, 중지 여부 확인
