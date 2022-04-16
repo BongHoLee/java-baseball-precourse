@@ -6,12 +6,17 @@ import java.util.Set;
 
 public class StrikeZoneFactory {
 
-    public static int createStrikeZone() {
+    public static int[] createStrikeZone() {
         Set<Integer> strikeSet = new HashSet<>();
+        addNoneDuplicatedStrikeNumberTo(strikeSet);
+
+        return numericArrayStrikeZoneOf(strikeSet);
+    }
+
+    private static void addNoneDuplicatedStrikeNumberTo(Set<Integer> strikeSet) {
         while (strikeSet.size() < 3) {
             addStrikeTo(strikeSet);
         }
-        return numericStrikeZoneOf(strikeSet);
     }
 
     private static void addStrikeTo(Set<Integer> strikeSet) {
@@ -19,13 +24,12 @@ public class StrikeZoneFactory {
         strikeSet.add(createdStrike);
     }
 
-    private static int numericStrikeZoneOf(Set<Integer> strikeSet) {
-        int numericStrike = 0;
-
-        int eachDigit = 1;
+    private static int[] numericArrayStrikeZoneOf(Set<Integer> strikeSet) {
+        int[] numericStrike = new int[3];
+        int i = 0;
         for (Integer eachStrike : strikeSet) {
-            numericStrike += eachStrike * eachDigit;
-            eachDigit *= 10;
+            numericStrike[i] = eachStrike;
+            i++;
         }
 
         return numericStrike;
