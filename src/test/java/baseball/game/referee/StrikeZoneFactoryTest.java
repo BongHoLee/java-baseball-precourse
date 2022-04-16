@@ -1,28 +1,25 @@
-package baseball.game;
+package baseball.game.referee;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
-public class RefereeTest {
+public class StrikeZoneFactoryTest {
 
-    private Referee referee;
+    private int strikeZone;
 
     @BeforeEach
-    public void setUp() {
-        referee = new Referee();
+    void setUp() {
+        strikeZone = StrikeZoneFactory.createStrikeZone();
     }
 
     @DisplayName("생성된 strikeZone이 123 ~ 987 사이의 수로 구성되는지 테스트")
     @RepeatedTest(100)
     public void check_strikeZone_is_between_123_and_987() {
-        int strikeZone = getStrikeZone();
         assertThat(strikeZone).isBetween(123, 987);
     }
 
@@ -30,7 +27,6 @@ public class RefereeTest {
     @RepeatedTest(100)
     public void check_strikeZone_is_not_duplicated() {
         Set<Integer> strikeSet = new HashSet<>();
-        int strikeZone = getStrikeZone();
 
         int count = 0;
         while ((strikeZone%10) > 0) {
@@ -40,21 +36,6 @@ public class RefereeTest {
         }
 
         assertThat(strikeSet.size()).isEqualTo(count);
-    }
-
-
-    private int getStrikeZone() {
-        int strikeZone = 0;
-        try {
-            Method method = referee.getClass().getDeclaredMethod("createStrikeZone");
-            method.setAccessible(true);
-
-            strikeZone = (int) method.invoke(referee);
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        return strikeZone;
     }
 
 }
