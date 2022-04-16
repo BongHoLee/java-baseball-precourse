@@ -1,46 +1,31 @@
 package baseball.game.pitcher;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class PitcherRuleTest {
 
-    @DisplayName("숫자가 아닌 문자열이 입력될 경우 유효성 통과 안된다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"", "12q", "abc", "aaaa", "ac2"})
-    public void notValid_if_exists_none_numeric_char(String pitcherNumber) {
-        assertThat(PitcherRule.isNotValid(pitcherNumber)).isTrue();
+    @ParameterizedTest(name = "{index}: {2}")
+    @MethodSource("validateParameters")
+    @DisplayName("전달된 pitcherNumber에 대한 유효성 검사")
+    public void invalid_strikeZone(String pitcherNumber, boolean expected, String name) {
+        assertEquals(expected, PitcherRule.isNotValid(pitcherNumber));
     }
 
-    @DisplayName("3 자리 숫자가 아닌 경우 유효성 통과가 안된다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"", "1234", "1", "12", "83"})
-    public void notValid_if_exists_not_three_digits_char(String pitcherNumber) {
-        assertThat(PitcherRule.isNotValid(pitcherNumber)).isTrue();
-    }
-
-    @DisplayName("중복된 수가 있을 경우 유효성 통과가 안된다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"111", "122", "998", "131", "545"})
-    public void notValid_if_exists_duplicated_number(String pitcherNumber) {
-        assertThat(PitcherRule.isNotValid(pitcherNumber)).isTrue();
-    }
-
-    @DisplayName("0이 포함되어 있는 경우 유효성 통과가 안된다.")
-    @ParameterizedTest
-    @ValueSource(strings = {"102", "014", "092", "580", "000"})
-    public void notValid_if_exists_zero_number(String pitcherNumber) {
-        assertThat(PitcherRule.isNotValid(pitcherNumber)).isTrue();
-    }
-
-    @DisplayName("1~9 사이의 세자리 중복되지 않은 수일 때 유효성 통과")
-    @ParameterizedTest
-    @ValueSource(strings = {"123", "234", "965", "542", "631"})
-    public void condition_all_satisfied(String pitcherNumber) {
-        assertThat(PitcherRule.isNotValid(pitcherNumber)).isFalse();
+    static Stream<Arguments> validateParameters() {
+        return Stream.of(
+            Arguments.of("", true, "공백 문자 입력 시 유효성 통과 실패"),
+            Arguments.of("12q", true, "숫자가 아닐 시 유효성 통과 실패"),
+            Arguments.of("1234", true, "3자리 숫자가 아닐 시 유효성 통과 실패"),
+            Arguments.of("112", true, "중복 숫자가 존재 시 유효성 통과 실패"),
+            Arguments.of("012", true, "0 존재 시 유효성 통과 실패"),
+            Arguments.of("589", false, "1~9 사이의 중복 없는 세 자리 숫자로 구성 시 유효성 통과")
+        );
     }
 
 }
