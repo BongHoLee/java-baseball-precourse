@@ -12,9 +12,9 @@ public class PitcherRuleTest {
 
     @ParameterizedTest(name = "{index}: {2}")
     @MethodSource("validateParameters")
-    @DisplayName("전달된 pitcherNumber에 대한 유효성 검사")
-    public void invalid_strikeZone(String pitcherNumber, boolean expected, String name) {
-        assertEquals(expected, PitcherRule.isNotValid(pitcherNumber));
+    @DisplayName("pitcherNumbers에 대한 유효성 검사")
+    public void validate_pitcherNumber(String pitcherNumbers, boolean expected, String name) {
+        assertEquals(expected, PitcherRule.isNotValid(pitcherNumbers));
     }
 
     static Stream<Arguments> validateParameters() {

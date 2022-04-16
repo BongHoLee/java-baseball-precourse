@@ -4,18 +4,18 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Pitcher {
 
-    public int pitch() {
-        return createdPitchNumber();
+    public int[] pitch() {
+        return createdPitchNumbers();
     }
 
-    private int createdPitchNumber() {
+    private int[] createdPitchNumbers() {
         String pitcherString = receiveStringFromUser();
 
         if (isNotValid(pitcherString)) {
             throw new IllegalArgumentException("[" + pitcherString + "] is not valid");
         }
 
-        return Integer.parseInt(pitcherString);
+        return numericArrayPitcherNumbersOf(pitcherString);
     }
 
     private String receiveStringFromUser() {
@@ -24,5 +24,15 @@ public class Pitcher {
 
     private boolean isNotValid(String pitcherString) {
         return PitcherRule.isNotValid(pitcherString);
+    }
+
+    private int[] numericArrayPitcherNumbersOf(String pitcherString) {
+        int[] pitcherNumbers = new int[3];
+        char[] pitcherCharArray = pitcherString.toCharArray();
+        for (int i=0; i<pitcherCharArray.length; i++) {
+            pitcherNumbers[i] = Character.getNumericValue(pitcherCharArray[i]);
+        }
+
+        return pitcherNumbers;
     }
 }
