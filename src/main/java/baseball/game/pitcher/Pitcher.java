@@ -3,6 +3,8 @@ package baseball.game.pitcher;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Pitcher {
+    private final static String ASK_TO_USER_MESSAGE = "숫자를 입력해 주세요 : ";
+    private final static String INPUT_ERROR_MESSAGE = "잘못된 입력입니다. 게임을 종료합니다.";
 
     public int[] pitch() {
         return createdPitchNumbers();
@@ -10,15 +12,15 @@ public class Pitcher {
 
     private int[] createdPitchNumbers() {
         String pitcherString = receiveStringFromUser();
-
         if (isNotValid(pitcherString)) {
-            throw new IllegalArgumentException("[" + pitcherString + "] is not valid");
+            throw new IllegalArgumentException(INPUT_ERROR_MESSAGE);
         }
 
         return numericArrayPitcherNumbersOf(pitcherString);
     }
 
     private String receiveStringFromUser() {
+        System.out.print(ASK_TO_USER_MESSAGE);
         return Console.readLine();
     }
 

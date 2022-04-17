@@ -12,7 +12,7 @@ public class ScoreBoard {
         print(scoreResult);
     }
 
-    public static String buildScoreFrom(Map<ScoreStatus, Integer> scoreStatusMap) {
+    private static String buildScoreFrom(Map<ScoreStatus, Integer> scoreStatusMap) {
         if (isNothing(scoreStatusMap)) {
             return nothingStatus();
         }
@@ -67,9 +67,7 @@ public class ScoreBoard {
         return strikeStatus;
     }
 
-
-    public static void print(String scoreResult) {
-        System.out.println(scoreResult);
+    private static void print(String message) {
+        System.out.println(message);
     }
-
 }
