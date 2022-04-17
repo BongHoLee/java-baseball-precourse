@@ -27,5 +27,4 @@ public class PitcherRuleTest {
             Arguments.of("589", false, "1~9 사이의 중복 없는 세 자리 숫자로 구성 시 유효성 통과")
         );
     }
-
 }

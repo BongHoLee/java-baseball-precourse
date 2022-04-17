@@ -3,6 +3,9 @@ package baseball.game.score;
 import java.util.Map;
 
 public class ScoreBoard {
+    private final static String STRIKE = "스트라이크";
+    private final static String BALL = "볼";
+    private final static String NOTHING = "낫싱";
 
     public static void display(Map<ScoreStatus, Integer> scoreStatusMap) {
         String scoreResult = buildScoreFrom(scoreStatusMap);
@@ -23,7 +26,7 @@ public class ScoreBoard {
     }
 
     private static String nothingStatus() {
-        return "낫싱";
+        return NOTHING;
     }
 
     private static String scoredStatus(Map<ScoreStatus, Integer> scoreStatusMap) {
@@ -38,7 +41,7 @@ public class ScoreBoard {
         if (scoreStatusMap.get(ScoreStatus.BALL) != 0) {
             ballStatus
                     .append(scoreStatusMap.get(ScoreStatus.BALL))
-                    .append(ScoreStatus.BALL);
+                    .append(BALL);
         }
 
         return ballStatus;
@@ -58,7 +61,7 @@ public class ScoreBoard {
         if (scoreStatusMap.get(ScoreStatus.STRIKE) != 0) {
             strikeStatus
                     .append((scoreStatusMap.get(ScoreStatus.STRIKE)))
-                    .append(ScoreStatus.STRIKE);
+                    .append(STRIKE);
         }
 
         return strikeStatus;
