@@ -5,11 +5,15 @@ import java.util.Set;
 
 public class PitcherRule {
 
-    public static boolean isNotValid(String pitcherString) {
-        return isNotThreeLetter(pitcherString) ||
+    private final static String NOT_VALID_ERROR_MESSAGE = "유효하지 않은 값 입니다. 게임을 종료합니다.";
+
+    public static void validationCheck(String pitcherString) {
+        if (isNotThreeLetter(pitcherString) ||
                 isNotNumber(pitcherString) ||
                 hasDuplicatedLetter(pitcherString) ||
-                hasZeroNumber(pitcherString);
+                hasZeroNumber(pitcherString)) {
+            throw new IllegalArgumentException(NOT_VALID_ERROR_MESSAGE);
+        }
 
     }
 
