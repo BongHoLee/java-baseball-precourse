@@ -35,12 +35,12 @@ public class RefereeTest {
 
     static Stream<Arguments> validateParameters() {
         return Stream.of(
-                Arguments.of(new int[] {1, 2, 3}, new int[] {1, 2, 3}, "0B 3S", "스트라이크존 123, 피쳐볼 123일 때 [0B 3S]" ),
-                Arguments.of(new int[] {1, 2, 3}, new int[] {1, 2, 5}, "0B 2S", "스트라이크존 123, 피쳐볼 125일 때 [0B 2S]" ),
-                Arguments.of(new int[] {2, 7, 5}, new int[] {2, 5, 7}, "2B 1S", "스트라이크존 275, 피쳐볼 257일 때 [2B 1S]" ),
-                Arguments.of(new int[] {1, 2, 3}, new int[] {4, 5, 6}, "0B 0S", "스트라이크존 123, 피쳐볼 456일 때 [0B 0S]" ),
-                Arguments.of(new int[] {8, 7, 3}, new int[] {8, 1, 7}, "1B 1S", "스트라이크존 873, 피쳐볼 817일 때 [1B 1S]" ),
-                Arguments.of(new int[] {5, 4, 9}, new int[] {9, 5, 4}, "3B 0S", "스트라이크존 549, 피쳐볼 954일 때 [3B 0S]" )
+                Arguments.of(new int[]{1, 2, 3}, new int[]{1, 2, 3}, "0B 3S", "스트라이크존 123, 피쳐볼 123일 때 [0B 3S]"),
+                Arguments.of(new int[]{1, 2, 3}, new int[]{1, 2, 5}, "0B 2S", "스트라이크존 123, 피쳐볼 125일 때 [0B 2S]"),
+                Arguments.of(new int[]{2, 7, 5}, new int[]{2, 5, 7}, "2B 1S", "스트라이크존 275, 피쳐볼 257일 때 [2B 1S]"),
+                Arguments.of(new int[]{1, 2, 3}, new int[]{4, 5, 6}, "0B 0S", "스트라이크존 123, 피쳐볼 456일 때 [0B 0S]"),
+                Arguments.of(new int[]{8, 7, 3}, new int[]{8, 1, 7}, "1B 1S", "스트라이크존 873, 피쳐볼 817일 때 [1B 1S]"),
+                Arguments.of(new int[]{5, 4, 9}, new int[]{9, 5, 4}, "3B 0S", "스트라이크존 549, 피쳐볼 954일 때 [3B 0S]")
         );
     }
 
@@ -51,7 +51,7 @@ public class RefereeTest {
         return result();
     }
 
-    private void setStrikeZone(int[] strikeZone) throws Exception{
+    private void setStrikeZone(int[] strikeZone) throws Exception {
         Field strikeZoneField = referee.getClass().getDeclaredField("strikeZone");
         strikeZoneField.setAccessible(true);
         strikeZoneField.set(referee, strikeZone);

@@ -24,7 +24,7 @@ public class StrikeZoneFactoryTest {
         int digit = 100;
         for (int eachStrike : strikeZone) {
             strikeZoneNumber += eachStrike * digit;
-            digit = digit/10;
+            digit = digit / 10;
         }
 
         assertThat(strikeZoneNumber).isBetween(123, 987);

@@ -9,7 +9,7 @@ public class ScoreRender {
     private final static String NOTHING = "낫싱";
 
     public static String render(Map<ScoreStatus, Integer> scoreStatusMap) {
-        return  buildScoreFrom(scoreStatusMap);
+        return buildScoreFrom(scoreStatusMap);
     }
 
     private static String buildScoreFrom(Map<ScoreStatus, Integer> scoreStatusMap) {

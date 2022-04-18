@@ -18,18 +18,21 @@ public class PitcherRuleTest {
     public void not_valid_pitcherNumber_test(String pitcherNumbers, String name) {
         String NOT_VALID_ERROR_MESSAGE = "유효하지 않은 값 입니다. 게임을 종료합니다.";
 
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> PitcherRule.validationCheck(pitcherNumbers));
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class,
+                () -> PitcherRule.validationCheck(pitcherNumbers));
         assertThat(e.getMessage()).isEqualTo(NOT_VALID_ERROR_MESSAGE);
 
     }
 
     static Stream<Arguments> throwExceptionParameter() {
         return Stream.of(
-            Arguments.of("", "공백 문자 입력 시 유효성 통과 실패"),
-            Arguments.of("12q", "숫자가 아닐 시 유효성 통과 실패"),
-            Arguments.of("1234", "3자리 숫자가 아닐 시 유효성 통과 실패"),
-            Arguments.of("112", "중복 숫자가 존재 시 유효성 통과 실패"),
-            Arguments.of("012", "0 존재 시 유효성 통과 실패")
+                Arguments.of("", "공백 문자 입력 시 유효성 통과 실패"),
+                Arguments.of("12q", "숫자가 아닐 시 유효성 통과 실패"),
+                Arguments.of("1234", "3자리 숫자가 아닐 시 유효성 통과 실패"),
+                Arguments.of("112", "중복 숫자가 존재 시 유효성 통과 실패"),
+                Arguments.of("012", "0 존재 시 유효성 통과 실패"),
+                Arguments.of("-132", "음수 존재 시 유효성 통과 실패")
+
         );
     }
 

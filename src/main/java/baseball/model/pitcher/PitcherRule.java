@@ -6,12 +6,14 @@ import java.util.Set;
 public class PitcherRule {
 
     private final static String NOT_VALID_ERROR_MESSAGE = "유효하지 않은 값 입니다. 게임을 종료합니다.";
+    private final static int MIN_VALUE = 1;
+    private final static int MAX_VALUE = 9;
 
     public static void validationCheck(String pitcherString) {
         if (isNotThreeLetter(pitcherString) ||
                 isNotNumber(pitcherString) ||
                 hasDuplicatedLetter(pitcherString) ||
-                hasZeroNumber(pitcherString)) {
+                hasOutOfRangeNumber(pitcherString)) {
             throw new IllegalArgumentException(NOT_VALID_ERROR_MESSAGE);
         }
 
@@ -41,7 +43,16 @@ public class PitcherRule {
         return pitchSet.size() != pitcherArray.length;
     }
 
-    private static boolean hasZeroNumber(String pitcherString) {
-        return pitcherString.contains("0");
+    private static boolean hasOutOfRangeNumber(String pitcherString) {
+        boolean isOutOfRange = false;
+        for (char eachPitch : pitcherString.toCharArray()) {
+            isOutOfRange = isOutOfRange || isOutOfRange(Character.getNumericValue(eachPitch));
+        }
+
+        return isOutOfRange;
+    }
+
+    private static boolean isOutOfRange(int pitch) {
+        return pitch < MIN_VALUE || pitch > MAX_VALUE;
     }
 }
