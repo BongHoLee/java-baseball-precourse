@@ -1,10 +1,10 @@
-package baseball.controller.game;
+package baseball.controller;
 
 import baseball.model.pitcher.Pitcher;
 import baseball.model.referee.Referee;
+import baseball.status.GameStatus;
 import baseball.view.Display;
-import baseball.view.ScoreRender;
-import baseball.view.ScoreStatus;
+import baseball.status.ScoreStatus;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 

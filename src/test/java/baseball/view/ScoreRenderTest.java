@@ -2,6 +2,7 @@ package baseball.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import baseball.status.ScoreStatus;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;

@@ -1,4 +1,4 @@
-package baseball.controller.game;
+package baseball.status;
 
 public enum GameStatus {
     NEW_GAME,

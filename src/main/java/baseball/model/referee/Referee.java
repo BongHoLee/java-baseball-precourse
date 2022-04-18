@@ -1,7 +1,7 @@
 package baseball.model.referee;
 
 import baseball.model.pitcher.Pitcher;
-import baseball.view.ScoreStatus;
+import baseball.status.ScoreStatus;
 import java.util.HashMap;
 import java.util.Map;
 

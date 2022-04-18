@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.status.ScoreStatus;
 import java.util.Map;
 
 public class ScoreRender {
