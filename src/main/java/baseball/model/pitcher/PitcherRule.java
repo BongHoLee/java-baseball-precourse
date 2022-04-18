@@ -1,4 +1,4 @@
-package baseball.game.pitcher;
+package baseball.model.pitcher;
 
 import java.util.HashSet;
 import java.util.Set;

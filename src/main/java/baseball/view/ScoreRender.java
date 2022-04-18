@@ -1,15 +1,14 @@
-package baseball.game.score;
+package baseball.view;
 
 import java.util.Map;
 
-public class ScoreBoard {
+public class ScoreRender {
     private final static String STRIKE = "스트라이크";
     private final static String BALL = "볼";
     private final static String NOTHING = "낫싱";
 
-    public static void display(Map<ScoreStatus, Integer> scoreStatusMap) {
-        String scoreResult = buildScoreFrom(scoreStatusMap);
-        print(scoreResult);
+    public static String render(Map<ScoreStatus, Integer> scoreStatusMap) {
+        return  buildScoreFrom(scoreStatusMap);
     }
 
     private static String buildScoreFrom(Map<ScoreStatus, Integer> scoreStatusMap) {
@@ -65,9 +64,5 @@ public class ScoreBoard {
         }
 
         return strikeStatus;
-    }
-
-    private static void print(String message) {
-        System.out.println(message);
     }
 }

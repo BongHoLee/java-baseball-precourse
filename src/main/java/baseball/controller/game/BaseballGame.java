@@ -1,17 +1,16 @@
-package baseball.game;
+package baseball.controller.game;
 
-import baseball.game.pitcher.Pitcher;
-import baseball.game.referee.Referee;
-import baseball.game.score.ScoreBoard;
-import baseball.game.score.ScoreStatus;
+import baseball.model.pitcher.Pitcher;
+import baseball.model.referee.Referee;
+import baseball.view.Display;
+import baseball.view.ScoreRender;
+import baseball.view.ScoreStatus;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Map;
 
 public class BaseballGame {
 
     private final static String ILLEGAL_CHOICE_ERROR_MESSAGE = "잘못된 입력입니다. 게임을 종료합니다.";
-    private final static String GAME_CLEAR_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료\n"
-            + "게임을 새로 시작하려면 1, 종료하려면 2를 입력해주세요";
 
     private final static String PLAY_NEXT = "1";
     private final static String GAME_STOP = "2";
@@ -42,7 +41,7 @@ public class BaseballGame {
     }
 
     private void processResult(Map<ScoreStatus, Integer> scoreStatusMap) {
-        ScoreBoard.display(scoreStatusMap);
+        Display.printScore(scoreStatusMap);
         processForGameClear(scoreStatusMap);
         processForExistsGame(scoreStatusMap);
 
@@ -56,7 +55,7 @@ public class BaseballGame {
     }
 
     private void displayGameClearMessage() {
-        System.out.println(GAME_CLEAR_MESSAGE);
+        Display.printGameClearMessage();
     }
 
     private void askToNextGame() {

@@ -1,11 +1,11 @@
-package baseball.game.referee;
+package baseball.model.referee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import baseball.game.pitcher.Pitcher;
-import baseball.game.score.ScoreStatus;
+import baseball.model.pitcher.Pitcher;
+import baseball.view.ScoreStatus;
 import java.lang.reflect.Field;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -25,7 +25,6 @@ public class RefereeTest {
         pitcher = mock(Pitcher.class);
         referee = new Referee(pitcher);
     }
-
 
     @ParameterizedTest(name = "{index}: {3}")
     @MethodSource("validateParameters")

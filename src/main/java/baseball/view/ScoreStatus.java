@@ -1,4 +1,4 @@
-package baseball.game.score;
+package baseball.view;
 
 public enum ScoreStatus {
     STRIKE,

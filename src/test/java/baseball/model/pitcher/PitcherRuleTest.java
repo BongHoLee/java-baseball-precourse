@@ -1,4 +1,4 @@
-package baseball.game.pitcher;
+package baseball.model.pitcher;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;

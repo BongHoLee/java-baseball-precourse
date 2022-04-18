@@ -1,9 +1,9 @@
-package baseball.game.pitcher;
+package baseball.model.pitcher;
 
+import baseball.view.Display;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Pitcher {
-    private final static String ASK_TO_USER_MESSAGE = "숫자를 입력해 주세요 : ";
 
     public int[] pitch() {
         return createdPitchNumbers();
@@ -17,7 +17,7 @@ public class Pitcher {
     }
 
     private String receiveStringFromUser() {
-        System.out.print(ASK_TO_USER_MESSAGE);
+        Display.printAskToUserMessage();
         return Console.readLine();
     }
 

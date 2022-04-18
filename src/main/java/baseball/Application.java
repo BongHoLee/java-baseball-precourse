@@ -1,7 +1,7 @@
 package baseball;
 
-import baseball.game.BaseballGame;
-import baseball.game.GameStatus;
+import baseball.controller.game.BaseballGame;
+import baseball.controller.game.GameStatus;
 
 public class Application {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package baseball.game.referee;
+package baseball.model.referee;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

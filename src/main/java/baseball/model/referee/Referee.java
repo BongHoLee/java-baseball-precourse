@@ -1,7 +1,7 @@
-package baseball.game.referee;
+package baseball.model.referee;
 
-import baseball.game.pitcher.Pitcher;
-import baseball.game.score.ScoreStatus;
+import baseball.model.pitcher.Pitcher;
+import baseball.view.ScoreStatus;
 import java.util.HashMap;
 import java.util.Map;
 

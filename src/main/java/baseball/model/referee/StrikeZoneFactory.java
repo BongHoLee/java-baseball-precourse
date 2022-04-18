@@ -1,4 +1,4 @@
-package baseball.game.referee;
+package baseball.model.referee;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashSet;
